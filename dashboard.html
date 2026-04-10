@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Research Dashboard</title>
+    <!-- Chart.js and PapaParse -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ffcc;
+            --secondary: #6600ff;
+            --bg-color: #0b0c10;
+            --surface-color: #1f2833;
+            --text-main: #c5c6c7;
+            --text-muted: #8b9bb4;
+            --danger: #ff4c4c;
+            --warning: #ffcc00;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(102, 0, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(0, 255, 204, 0.1) 0%, transparent 40%);
+        }
+
+        header {
+            padding: 2rem;
+            text-align: center;
+            background: rgba(31, 40, 51, 0.8);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, var(--primary), #00b3ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-links a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .header-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            flex-grow: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--surface-color);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 204, 0.3);
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .chart-container {
+            background: var(--surface-color);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            height: 400px;
+        }
+
+        .chart-title {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .error-msg {
+            color: var(--danger);
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Security <span class="highlight">Intelligence Dashboard</span></h1>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">Live visualization of file system vulnerabilities and forensic artifacts.</p>
+        <div class="header-links">
+            <a href="index.html">← Back to Home</a>
+            <a href="research-paper.html">View Full Paper</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div id="errorMsg" class="error-msg">
+            Note: Charts cannot load CSV data due to local file restrictions. Please run a local web server (e.g. <code>python -m http.server</code>) or view the GitHub Pages hosted version.
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="valCritical">0</div>
+                <div class="stat-label">Critical Issues</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="valHigh">0</div>
+                <div class="stat-label">High Risk Files</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="valEvents">0</div>
+                <div class="stat-label">Forensic Events</div>
+            </div>
+        </div>
+
+        <div class="charts-grid">
+            <div class="chart-container">
+                <div class="chart-title">Permissions Audit Breakdown</div>
+                <canvas id="permissionsChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">Forensic Timeline Activity</div>
+                <canvas id="timelineChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart Defaults
+        Chart.defaults.color = '#c5c6c7';
+        Chart.defaults.font.family = 'Inter';
+
+        // Helper Error Handler
+        const showError = () => {
+            document.getElementById('errorMsg').style.display = 'block';
+        };
+
+        // Load Validation Logic
+        function parsePermissionsData(data) {
+            let critical = 0;
+            let high = 0;
+            let medium = 0;
+
+            const counts = { 'CRITICAL': 0, 'HIGH': 0, 'MEDIUM': 0, 'LOW': 0 };
+
+            data.forEach(row => {
+                if(!row.issues) return;
+                if(row.issues.includes('[CRITICAL]')) counts['CRITICAL']++;
+                if(row.issues.includes('[HIGH]')) counts['HIGH']++;
+                if(row.issues.includes('[MEDIUM]')) counts['MEDIUM']++;
+                if(row.issues.includes('[LOW]')) counts['LOW']++;
+            });
+
+            document.getElementById('valCritical').innerText = counts['CRITICAL'];
+            document.getElementById('valHigh').innerText = counts['HIGH'];
+
+            new Chart(document.getElementById('permissionsChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Critical', 'High Risk', 'Medium Risk', 'Low Risk'],
+                    datasets: [{
+                        data: [counts['CRITICAL'], counts['HIGH'], counts['MEDIUM'], counts['LOW']],
+                        backgroundColor: [
+                            '#ff4c4c', // danger
+                            '#ffcc00', // warning
+                            '#6600ff', // secondary
+                            '#00ffcc'  // primary
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        function parseTimelineData(data) {
+            document.getElementById('valEvents').innerText = data.length;
+
+            const eventTypes = {};
+            data.forEach(row => {
+                if(!row.event_type) return;
+                const type = row.event_type.split(' ')[0]; // E.g., 'C' from 'C (Changed)'
+                eventTypes[type] = (eventTypes[type] || 0) + 1;
+            });
+
+            new Chart(document.getElementById('timelineChart'), {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(eventTypes),
+                    datasets: [{
+                        label: 'Event Count',
+                        data: Object.values(eventTypes),
+                        backgroundColor: '#00ffcc',
+                        borderRadius: 5,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.05)' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Fetch CSVs via PapaParse
+        Papa.parse('results/permission_audit_report.csv', {
+            download: true,
+            header: true,
+            complete: function(results) {
+                parsePermissionsData(results.data);
+            },
+            error: showError
+        });
+
+        Papa.parse('results/forensic_timeline.csv', {
+            download: true,
+            header: true,
+            complete: function(results) {
+                parseTimelineData(results.data);
+            },
+            error: showError
+        });
+
+    </script>
+</body>
+</html>
