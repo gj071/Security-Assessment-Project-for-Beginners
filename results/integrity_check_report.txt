@@ -1,0 +1,19 @@
+======================================================================
+  FILE INTEGRITY CHECK REPORT
+======================================================================
+  Generated:     2026-03-13 11:04:10
+  Target:        C:\Users\gunja\Downloads\Security-Assessments-projects-for-Beginners-main (2)\Security-Assessments-projects-for-Beginners-main\file-system-security-research\test_sandbox
+  Baseline from: 2026-03-12T17:14:49.707402
+  Files checked: 16
+  Time elapsed:  2.620s
+  Status:        CHANGES DETECTED — Investigate immediately
+----------------------------------------------------------------------
+
+  MODIFIED FILES (1):
+  ------------------------------------------------
+  [MODIFIED] config\app.conf
+             Old hash: bd07f43f63e41e25...
+             New hash: fd0b2a16057664b4...
+             Size: 77 -> 108
+
+======================================================================

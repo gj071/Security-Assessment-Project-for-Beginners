@@ -1,0 +1,116 @@
+======================================================================
+  FILE ACCESS PATTERN ANOMALY REPORT
+======================================================================
+  Generated: 2026-03-13 11:33:24
+  Events analyzed: 59
+  Findings: 14
+  Critical: 6
+  High: 5
+  Medium: 3
+----------------------------------------------------------------------
+
+  EVENT STATISTICS
+  ------------------------------------------------
+  Unique users: 5 (alice, bob, charlie, deploy_svc, unknown_proc)
+  CHMOD                2 events
+  EXEC                 1 events
+  READ                 43 events
+  WRITE                13 events
+
+======================================================================
+  DETAILED FINDINGS
+======================================================================
+
+  Finding #1: [CRITICAL] AFTER_HOURS_ACCESS
+  User: bob
+  Events: 8 | Sensitive: 5
+    [DENIED] READ /etc/shadow @ 2026-03-01 23:15:42
+    [SUCCESS] READ /etc/passwd @ 2026-03-01 23:15:44
+    [DENIED] READ /root/.ssh/authorized_keys @ 2026-03-01 23:16:01
+    [DENIED] READ /root/.ssh/id_rsa @ 2026-03-01 23:16:15
+    [DENIED] READ /var/lib/secrets/db_credentials.conf @ 2026-03-01 23:17:30
+
+  Finding #2: [CRITICAL] AFTER_HOURS_ACCESS
+  User: unknown_proc
+  Events: 12 | Sensitive: 1
+    [SUCCESS] READ /etc/passwd @ 2026-03-02 02:30:00
+    [SUCCESS] READ /etc/group @ 2026-03-02 02:30:05
+    [SUCCESS] READ /etc/hosts @ 2026-03-02 02:30:10
+    [SUCCESS] READ /etc/resolv.conf @ 2026-03-02 02:30:15
+    [SUCCESS] READ /etc/crontab @ 2026-03-02 02:30:20
+
+  Finding #3: [CRITICAL] SENSITIVE_ACCESS_DENIED
+  User: bob
+  Denied attempts: 5
+    -> /var/lib/secrets/api_keys.json
+    -> /var/lib/secrets/db_credentials.conf
+    -> /root/.ssh/authorized_keys
+    -> /root/.ssh/id_rsa
+    -> /etc/shadow
+
+  Finding #4: [CRITICAL] SENSITIVE_ACCESS_DENIED
+  User: charlie
+  Denied attempts: 3
+    -> /shared/hr/employee_ssn.csv
+    -> /shared/hr/salaries_2026.xlsx
+    -> /shared/finance/bank_accounts.csv
+
+  Finding #5: [CRITICAL] RECON_PATTERN
+  User: unknown_proc
+  Window: 2026-03-02 02:30:00 - 2026-03-02 02:30:35
+    -> /etc/crontab
+    -> /etc/group
+    -> /etc/hosts
+    -> /etc/os-release
+    -> /etc/passwd
+    -> /etc/resolv.conf
+    -> /etc/sudoers
+    -> /proc/version
+
+  Finding #6: [CRITICAL] EXEC_FROM_TEMP
+  User: unknown_proc
+  Path: /tmp/.payload.elf @ 2026-03-02 02:31:00
+
+  Finding #7: [HIGH] SENSITIVE_ACCESS_DENIED
+  User: unknown_proc
+  Denied attempts: 1
+    -> /etc/sudoers
+
+  Finding #8: [HIGH] SUSPICIOUS_TEMP_FILE
+  User: bob
+  Path: /tmp/.hidden_script.sh @ 2026-03-01 23:18:02
+
+  Finding #9: [HIGH] SUSPICIOUS_TEMP_FILE
+  User: bob
+  Path: /tmp/.hidden_script.sh @ 2026-03-01 23:18:30
+
+  Finding #10: [HIGH] SUSPICIOUS_TEMP_FILE
+  User: unknown_proc
+  Path: /tmp/.payload.elf @ 2026-03-02 02:30:45
+
+  Finding #11: [HIGH] SUSPICIOUS_TEMP_FILE
+  User: unknown_proc
+  Path: /tmp/.payload.elf @ 2026-03-02 02:30:50
+
+  Finding #12: [MEDIUM] ABNORMAL_FREQUENCY
+  User: alice
+  Hour: 2026-03-01 09 | Count: 2 | Z-score: 2.85
+
+  Finding #13: [MEDIUM] ABNORMAL_FREQUENCY
+  User: bob
+  Hour: 2026-03-01 23 | Count: 8 | Z-score: 2.64
+
+  Finding #14: [MEDIUM] ABNORMAL_FREQUENCY
+  User: charlie
+  Hour: 2026-03-02 14 | Count: 7 | Z-score: 2.24
+
+======================================================================
+  RECOMMENDATIONS
+======================================================================
+  * Investigate after-hours access with the user
+  * System recon detected — check for compromised accounts
+  * Mount /tmp with noexec; investigate executed binary
+  * Multiple denied accesses — review privilege assignments
+  * Inspect hidden files in /tmp
+
+======================================================================

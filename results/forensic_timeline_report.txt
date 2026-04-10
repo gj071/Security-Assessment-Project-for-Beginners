@@ -1,0 +1,50 @@
+======================================================================
+  FORENSIC TIMELINE RECONSTRUCTION REPORT
+======================================================================
+  Generated: 2026-03-13 11:33:37
+  Platform:  Windows 11
+  Target:    C:\Users\gunja\Downloads\Security-Assessments-projects-for-Beginners-main (2)\Security-Assessments-projects-for-Beginners-main\file-system-security-research\test_sandbox
+  Items:     27
+  Events:    108
+  Errors:    0
+----------------------------------------------------------------------
+  Earliest event: 2026-03-12 17:13:45.959226
+  Latest event:   2026-03-13 11:32:44.055578
+  Time span:      18.3 hours
+
+  EARLIEST 10 EVENTS
+  ------------------------------------------------
+  2026-03-12 17:13:45.959226  C (Changed/Created)     config
+  2026-03-12 17:13:45.959226  B (Born)                config
+  2026-03-12 17:13:45.963114  C (Changed/Created)     logs
+  2026-03-12 17:13:45.963114  B (Born)                logs
+  2026-03-12 17:13:45.965975  C (Changed/Created)     secrets
+  2026-03-12 17:13:45.965975  B (Born)                secrets
+  2026-03-12 17:13:45.966991  C (Changed/Created)     bin
+  2026-03-12 17:13:45.966991  B (Born)                bin
+  2026-03-12 17:13:45.971327  C (Changed/Created)     public
+  2026-03-12 17:13:45.971327  B (Born)                public
+
+  LATEST 10 EVENTS
+  ------------------------------------------------
+  2026-03-13 11:32:44.051578  A (Accessed)            secrets\shadow_backup
+  2026-03-13 11:32:44.052577  A (Accessed)            tmp
+  2026-03-13 11:32:44.052577  A (Accessed)            tmp\.hidden_payload.sh
+  2026-03-13 11:32:44.053597  A (Accessed)            users
+  2026-03-13 11:32:44.053597  A (Accessed)            users\alice
+  2026-03-13 11:32:44.053597  A (Accessed)            users\alice\documents
+  2026-03-13 11:32:44.054592  A (Accessed)            users\bob
+  2026-03-13 11:32:44.054592  A (Accessed)            users\alice\documents\report.txt
+  2026-03-13 11:32:44.055578  A (Accessed)            users\bob\.ssh
+  2026-03-13 11:32:44.055578  A (Accessed)            users\bob\.ssh\id_rsa
+
+  FORENSIC ANALYSIS NOTES
+  ------------------------------------------------
+  * st_ctime = creation time on Windows (NTFS)
+  * NTFS stores timestamps in UTC internally
+  * FAT32 has only 2-second timestamp granularity
+  * Timestamps can be spoofed — corroborate with other evidence
+  * Full CSV timeline written for detailed analysis
+
+  CSV timeline: C:\Users\gunja\Downloads\Security-Assessments-projects-for-Beginners-main (2)\Security-Assessments-projects-for-Beginners-main\file-system-security-research\results\forensic_timeline.csv
+======================================================================

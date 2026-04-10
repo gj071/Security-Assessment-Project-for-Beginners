@@ -1,0 +1,109 @@
+timestamp_str,event_type,path,file_type,size,permissions,owner,group,details
+2026-03-12 17:13:45.959226,C (Changed/Created),config,directory,0,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:45.959226,B (Born),config,directory,0,0777,0,0,File creation time
+2026-03-12 17:13:45.963114,C (Changed/Created),logs,directory,0,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:45.963114,B (Born),logs,directory,0,0777,0,0,File creation time
+2026-03-12 17:13:45.965975,C (Changed/Created),secrets,directory,0,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:45.965975,B (Born),secrets,directory,0,0777,0,0,File creation time
+2026-03-12 17:13:45.966991,C (Changed/Created),bin,directory,0,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:45.966991,B (Born),bin,directory,0,0777,0,0,File creation time
+2026-03-12 17:13:45.971327,C (Changed/Created),public,directory,0,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:45.971327,B (Born),public,directory,0,0777,0,0,File creation time
+2026-03-12 17:13:45.974375,C (Changed/Created),users,directory,0,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:45.974375,B (Born),users,directory,0,0777,0,0,File creation time
+2026-03-12 17:13:45.975899,C (Changed/Created),users\alice,directory,0,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:45.975899,B (Born),users\alice,directory,0,0777,0,0,File creation time
+2026-03-12 17:13:45.976915,M (Modified),users\alice,directory,0,0777,0,0,File content last modified
+2026-03-12 17:13:45.976915,C (Changed/Created),users\alice\documents,directory,0,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:45.976915,B (Born),users\alice\documents,directory,0,0777,0,0,File creation time
+2026-03-12 17:13:45.978934,M (Modified),users,directory,0,0777,0,0,File content last modified
+2026-03-12 17:13:45.978934,C (Changed/Created),users\bob,directory,0,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:45.978934,B (Born),users\bob,directory,0,0777,0,0,File creation time
+2026-03-12 17:13:45.980929,M (Modified),users\bob,directory,0,0777,0,0,File content last modified
+2026-03-12 17:13:45.980929,C (Changed/Created),users\bob\.ssh,directory,0,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:45.980929,B (Born),users\bob\.ssh,directory,0,0777,0,0,File creation time
+2026-03-12 17:13:45.981929,C (Changed/Created),tmp,directory,0,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:45.981929,B (Born),tmp,directory,0,0777,0,0,File creation time
+2026-03-12 17:13:46.003380,C (Changed/Created),config\app.conf,file,108,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.003380,B (Born),config\app.conf,file,108,0666,0,0,File creation time
+2026-03-12 17:13:46.007918,C (Changed/Created),config\logging.conf,file,15,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.007918,B (Born),config\logging.conf,file,15,0666,0,0,File creation time
+2026-03-12 17:13:46.008920,M (Modified),config\logging.conf,file,15,0666,0,0,File content last modified
+2026-03-12 17:13:46.011919,M (Modified),logs,directory,0,0777,0,0,File content last modified
+2026-03-12 17:13:46.011919,C (Changed/Created),logs\app.log,file,107,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.011919,B (Born),logs\app.log,file,107,0666,0,0,File creation time
+2026-03-12 17:13:46.012916,M (Modified),logs\app.log,file,107,0666,0,0,File content last modified
+2026-03-12 17:13:46.019544,C (Changed/Created),public\index.html,file,33,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.019544,B (Born),public\index.html,file,33,0666,0,0,File creation time
+2026-03-12 17:13:46.021535,M (Modified),public\index.html,file,33,0666,0,0,File content last modified
+2026-03-12 17:13:46.034171,M (Modified),users\alice\documents,directory,0,0777,0,0,File content last modified
+2026-03-12 17:13:46.034171,M (Modified),users\alice\documents\report.txt,file,28,0666,0,0,File content last modified
+2026-03-12 17:13:46.034171,C (Changed/Created),users\alice\documents\report.txt,file,28,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.034171,B (Born),users\alice\documents\report.txt,file,28,0666,0,0,File creation time
+2026-03-12 17:13:46.039084,M (Modified),bin\healthcheck.bat,file,19,0777,0,0,File content last modified
+2026-03-12 17:13:46.039084,C (Changed/Created),bin\healthcheck.bat,file,19,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.039084,B (Born),bin\healthcheck.bat,file,19,0777,0,0,File creation time
+2026-03-12 17:13:46.059363,C (Changed/Created),config\database.conf,file,67,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.059363,B (Born),config\database.conf,file,67,0666,0,0,File creation time
+2026-03-12 17:13:46.060363,M (Modified),config\database.conf,file,67,0666,0,0,File content last modified
+2026-03-12 17:13:46.069966,C (Changed/Created),secrets\server.key,file,166,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.069966,B (Born),secrets\server.key,file,166,0666,0,0,File creation time
+2026-03-12 17:13:46.070531,M (Modified),secrets\server.key,file,166,0666,0,0,File content last modified
+2026-03-12 17:13:46.077845,M (Modified),users\bob\.ssh,directory,0,0777,0,0,File content last modified
+2026-03-12 17:13:46.077845,C (Changed/Created),users\bob\.ssh\id_rsa,file,141,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.077845,B (Born),users\bob\.ssh\id_rsa,file,141,0666,0,0,File creation time
+2026-03-12 17:13:46.078472,M (Modified),users\bob\.ssh\id_rsa,file,141,0666,0,0,File content last modified
+2026-03-12 17:13:46.096445,C (Changed/Created),secrets\shadow_backup,file,48,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.096445,B (Born),secrets\shadow_backup,file,48,0666,0,0,File creation time
+2026-03-12 17:13:46.098463,M (Modified),secrets\shadow_backup,file,48,0666,0,0,File content last modified
+2026-03-12 17:13:46.114133,C (Changed/Created),config\.env,file,162,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.114133,B (Born),config\.env,file,162,0666,0,0,File creation time
+2026-03-12 17:13:46.114759,M (Modified),config,directory,0,0777,0,0,File content last modified
+2026-03-12 17:13:46.115286,M (Modified),config\.env,file,162,0666,0,0,File content last modified
+2026-03-12 17:13:46.139507,C (Changed/Created),secrets\cert.pem,file,93,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.139507,B (Born),secrets\cert.pem,file,93,0666,0,0,File creation time
+2026-03-12 17:13:46.141503,M (Modified),secrets\cert.pem,file,93,0666,0,0,File content last modified
+2026-03-12 17:13:46.152124,M (Modified),public,directory,0,0777,0,0,File content last modified
+2026-03-12 17:13:46.152124,C (Changed/Created),public\api_token.json,file,101,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.152124,B (Born),public\api_token.json,file,101,0666,0,0,File creation time
+2026-03-12 17:13:46.152634,M (Modified),public\api_token.json,file,101,0666,0,0,File content last modified
+2026-03-12 17:13:46.158688,M (Modified),bin,directory,0,0777,0,0,File content last modified
+2026-03-12 17:13:46.158688,C (Changed/Created),bin\backup_cron.bat,file,144,0777,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.158688,B (Born),bin\backup_cron.bat,file,144,0777,0,0,File creation time
+2026-03-12 17:13:46.159236,M (Modified),bin\backup_cron.bat,file,144,0777,0,0,File content last modified
+2026-03-12 17:13:46.168488,M (Modified),secrets,directory,0,0777,0,0,File content last modified
+2026-03-12 17:13:46.168488,C (Changed/Created),secrets\password_list.txt,file,75,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.168488,B (Born),secrets\password_list.txt,file,75,0666,0,0,File creation time
+2026-03-12 17:13:46.170169,M (Modified),secrets\password_list.txt,file,75,0666,0,0,File content last modified
+2026-03-12 17:13:46.181078,M (Modified),tmp,directory,0,0777,0,0,File content last modified
+2026-03-12 17:13:46.181078,C (Changed/Created),tmp\.hidden_payload.sh,file,94,0666,0,0,Metadata changed (Linux) or file created (Windows)
+2026-03-12 17:13:46.181078,B (Born),tmp\.hidden_payload.sh,file,94,0666,0,0,File creation time
+2026-03-12 17:13:46.182078,M (Modified),tmp\.hidden_payload.sh,file,94,0666,0,0,File content last modified
+2026-03-12 17:15:40.860736,M (Modified),config\app.conf,file,108,0666,0,0,File content last modified
+2026-03-13 11:32:44.037965,A (Accessed),bin,directory,0,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.038985,A (Accessed),bin\backup_cron.bat,file,144,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.040967,A (Accessed),bin\healthcheck.bat,file,19,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.041965,A (Accessed),config,directory,0,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.041965,A (Accessed),config\.env,file,162,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.042968,A (Accessed),config\app.conf,file,108,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.043969,A (Accessed),config\database.conf,file,67,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.044967,A (Accessed),config\logging.conf,file,15,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.045970,A (Accessed),logs,directory,0,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.045970,A (Accessed),logs\app.log,file,107,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.046967,A (Accessed),public,directory,0,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.046967,A (Accessed),public\api_token.json,file,101,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.048977,A (Accessed),secrets,directory,0,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.048977,A (Accessed),public\index.html,file,33,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.049568,A (Accessed),secrets\cert.pem,file,93,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.049568,A (Accessed),secrets\password_list.txt,file,75,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.050579,A (Accessed),secrets\server.key,file,166,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.051578,A (Accessed),secrets\shadow_backup,file,48,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.052577,A (Accessed),tmp,directory,0,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.052577,A (Accessed),tmp\.hidden_payload.sh,file,94,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.053597,A (Accessed),users,directory,0,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.053597,A (Accessed),users\alice,directory,0,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.053597,A (Accessed),users\alice\documents,directory,0,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.054592,A (Accessed),users\bob,directory,0,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.054592,A (Accessed),users\alice\documents\report.txt,file,28,0666,0,0,File last accessed/read
+2026-03-13 11:32:44.055578,A (Accessed),users\bob\.ssh,directory,0,0777,0,0,File last accessed/read
+2026-03-13 11:32:44.055578,A (Accessed),users\bob\.ssh\id_rsa,file,141,0666,0,0,File last accessed/read

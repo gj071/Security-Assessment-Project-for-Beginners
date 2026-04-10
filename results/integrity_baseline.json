@@ -1,0 +1,170 @@
+{
+  "version": "1.0",
+  "created": "2026-03-13T11:32:44.056685",
+  "target_directory": "C:\\Users\\gunja\\Downloads\\Security-Assessments-projects-for-Beginners-main (2)\\Security-Assessments-projects-for-Beginners-main\\file-system-security-research\\test_sandbox",
+  "algorithm": "SHA-256",
+  "file_count": 16,
+  "total_bytes": 1401,
+  "files": {
+    "bin\\backup_cron.bat": {
+      "sha256": "8d4249a26f68a76c7b7627a45ce7f447c2b2ea429fd87c14379b82f7da596b1e",
+      "metadata": {
+        "size": 144,
+        "mode": "0o100777",
+        "mtime": 1773315826.1592364,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "bin\\healthcheck.bat": {
+      "sha256": "0e0a9d9a0a6baa362d5211ba99f82918454b52394fecfef163a912e06b2d3019",
+      "metadata": {
+        "size": 19,
+        "mode": "0o100777",
+        "mtime": 1773315826.0390844,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "config\\.env": {
+      "sha256": "dd7ae1fd872012fb8b6551827edefdc1207fdd525e7d66964568d5506d88180a",
+      "metadata": {
+        "size": 162,
+        "mode": "0o100666",
+        "mtime": 1773315826.1152864,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "config\\app.conf": {
+      "sha256": "fd0b2a16057664b4288ac1e5f3e46c770770426e631948977c1f61d646704eee",
+      "metadata": {
+        "size": 108,
+        "mode": "0o100666",
+        "mtime": 1773315940.860736,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "config\\database.conf": {
+      "sha256": "33d2dbd9ebdbd09b480d8bbd5ff8adb1e0f5e95c6b5cdedfad5c2c897a14e235",
+      "metadata": {
+        "size": 67,
+        "mode": "0o100666",
+        "mtime": 1773315826.0603628,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "config\\logging.conf": {
+      "sha256": "a35905fabdb5bf0da8f6bf1607b2d4b34714ed0f79691d4afe22a8df6562a8b1",
+      "metadata": {
+        "size": 15,
+        "mode": "0o100666",
+        "mtime": 1773315826.0089204,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "logs\\app.log": {
+      "sha256": "830a448b4c36f7046586b052d3ea65ea83a22630fc494304f13dd1691dd2ca86",
+      "metadata": {
+        "size": 107,
+        "mode": "0o100666",
+        "mtime": 1773315826.012916,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "public\\api_token.json": {
+      "sha256": "c8a3f8e9a70584dbbbb1cca68ea33369b97400aed2aabc3bd370660b1e4f233a",
+      "metadata": {
+        "size": 101,
+        "mode": "0o100666",
+        "mtime": 1773315826.1526344,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "public\\index.html": {
+      "sha256": "6e99ac624f15aa076a857701253e5eca20b15e637bfbdc1fa4babbbd2c46e6fe",
+      "metadata": {
+        "size": 33,
+        "mode": "0o100666",
+        "mtime": 1773315826.0215354,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "secrets\\cert.pem": {
+      "sha256": "74adbd5de23ab3e3822df690fe9858b5af449c10c5a075ba0e14a9bba6adee33",
+      "metadata": {
+        "size": 93,
+        "mode": "0o100666",
+        "mtime": 1773315826.1415026,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "secrets\\password_list.txt": {
+      "sha256": "27c718cbc13efe8338a8aeeea26832c4e1e6bdedd679adae848ba71c89d3f4d5",
+      "metadata": {
+        "size": 75,
+        "mode": "0o100666",
+        "mtime": 1773315826.1701694,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "secrets\\server.key": {
+      "sha256": "c80da595c0f5cd03f53fe786ab089093acf9c554faa535f62141c94e13b45260",
+      "metadata": {
+        "size": 166,
+        "mode": "0o100666",
+        "mtime": 1773315826.0705311,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "secrets\\shadow_backup": {
+      "sha256": "47b8a80a956d2c5d0365eb47d660da515e4c92ff83935bcdd17bfc87fa88bd55",
+      "metadata": {
+        "size": 48,
+        "mode": "0o100666",
+        "mtime": 1773315826.0984628,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "tmp\\.hidden_payload.sh": {
+      "sha256": "0431a9700302fc5adfe2ac0b8819a991aa4659f926751c9db711f324b48999bc",
+      "metadata": {
+        "size": 94,
+        "mode": "0o100666",
+        "mtime": 1773315826.182078,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "users\\alice\\documents\\report.txt": {
+      "sha256": "1c55493ee878404292d42322ceaf55f3cdeb98e23b3ab2b0165be7d96ccb885a",
+      "metadata": {
+        "size": 28,
+        "mode": "0o100666",
+        "mtime": 1773315826.0341709,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "users\\bob\\.ssh\\id_rsa": {
+      "sha256": "76b2d2866866bb6bf57a9210516d2f2276bf72bb4d1c3bb94671a6a161242be5",
+      "metadata": {
+        "size": 141,
+        "mode": "0o100666",
+        "mtime": 1773315826.078472,
+        "uid": 0,
+        "gid": 0
+      }
+    }
+  }
+}

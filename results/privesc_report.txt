@@ -1,0 +1,69 @@
+======================================================================
+  PRIVILEGE ESCALATION PATHWAY REPORT
+======================================================================
+  Generated: 2026-03-12 21:51:31
+  Platform:  Windows 11
+  Findings:  48
+  Critical:  21
+  High:      27
+  Medium:    0
+----------------------------------------------------------------------
+
+  [HIGH] WORLD_WRITABLE_IN_SANDBOX (16 found)
+  ------------------------------------------------
+    0777  ./test_sandbox\bin\backup_cron.bat
+    0777  ./test_sandbox\bin\healthcheck.bat
+    0666  ./test_sandbox\config\.env
+    0666  ./test_sandbox\config\app.conf
+    0666  ./test_sandbox\config\database.conf
+    0666  ./test_sandbox\config\logging.conf
+    0666  ./test_sandbox\logs\app.log
+    0666  ./test_sandbox\public\api_token.json
+    0666  ./test_sandbox\public\index.html
+    0666  ./test_sandbox\secrets\cert.pem
+    0666  ./test_sandbox\secrets\password_list.txt
+    0666  ./test_sandbox\secrets\server.key
+    0666  ./test_sandbox\secrets\shadow_backup
+    0666  ./test_sandbox\tmp\.hidden_payload.sh
+    0666  ./test_sandbox\users\alice\documents\report.txt
+    0666  ./test_sandbox\users\bob\.ssh\id_rsa
+
+  [HIGH] WRITABLE_DIR_NO_STICKY (11 found)
+  ------------------------------------------------
+    0777  ./test_sandbox\bin
+    0777  ./test_sandbox\config
+    0777  ./test_sandbox\logs
+    0777  ./test_sandbox\public
+    0777  ./test_sandbox\secrets
+    0777  ./test_sandbox\tmp
+    0777  ./test_sandbox\users
+    0777  ./test_sandbox\users\alice
+    0777  ./test_sandbox\users\bob
+    0777  ./test_sandbox\users\alice\documents
+    0777  ./test_sandbox\users\bob\.ssh
+
+  [CRITICAL] WRITABLE_PATH_DIR (21 found)
+  ------------------------------------------------
+    0777  C:\Program Files\Python313\Scripts\ — World-writable PATH dir enables binary planting attacks
+    0777  C:\Program Files\Python313\ — World-writable PATH dir enables binary planting attacks
+    0777  C:\Program Files\Common Files\Oracle\Java\javapath — World-writable PATH dir enables binary planting attacks
+    0777  C:\windows\system32 — World-writable PATH dir enables binary planting attacks
+    0777  C:\windows — World-writable PATH dir enables binary planting attacks
+    0777  C:\windows\System32\Wbem — World-writable PATH dir enables binary planting attacks
+    0777  C:\windows\System32\WindowsPowerShell\v1.0\ — World-writable PATH dir enables binary planting attacks
+    0777  C:\windows\System32\OpenSSH\ — World-writable PATH dir enables binary planting attacks
+    0777  C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common — World-writable PATH dir enables binary planting attacks
+    0777  C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR — World-writable PATH dir enables binary planting attacks
+    0777  C:\WINDOWS\system32 — World-writable PATH dir enables binary planting attacks
+    0777  C:\WINDOWS — World-writable PATH dir enables binary planting attacks
+    0777  C:\WINDOWS\System32\Wbem — World-writable PATH dir enables binary planting attacks
+    0777  C:\WINDOWS\System32\WindowsPowerShell\v1.0\ — World-writable PATH dir enables binary planting attacks
+    0777  C:\WINDOWS\System32\OpenSSH\ — World-writable PATH dir enables binary planting attacks
+    0777  C:\Program Files\Java\jdk-23\bin — World-writable PATH dir enables binary planting attacks
+    0777  C:\Program Files\MySQL\MySQL Server 8.0\bin — World-writable PATH dir enables binary planting attacks
+    0777  C:\Users\gunja\AppData\Local\Programs\Python\Launcher\ — World-writable PATH dir enables binary planting attacks
+    0777  C:\Users\gunja\AppData\Local\Microsoft\WindowsApps — World-writable PATH dir enables binary planting attacks
+    0777  C:\Users\gunja\AppData\Local\Programs\Microsoft VS Code\bin — World-writable PATH dir enables binary planting attacks
+    ... and 1 more
+
+======================================================================
