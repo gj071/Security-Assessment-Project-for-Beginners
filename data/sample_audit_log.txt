@@ -1,0 +1,73 @@
+# Sample Audit Log for File System Security Research
+# Format: timestamp|user|action|path|result|details
+# This is synthetic data for offline analysis with 03_access_pattern_analyzer.py
+#
+# Normal business hours: 09:00 - 18:00
+# Expected users: alice, bob, charlie, deploy_svc
+# Sensitive paths: /etc/shadow, /etc/passwd, /root/.ssh/, /var/lib/secrets/
+
+2026-03-01 09:15:22|alice|READ|/home/alice/documents/report.docx|SUCCESS|routine file access
+2026-03-01 09:17:45|alice|READ|/home/alice/documents/budget.xlsx|SUCCESS|routine file access
+2026-03-01 09:32:10|bob|READ|/var/www/html/index.html|SUCCESS|web content review
+2026-03-01 09:45:00|deploy_svc|READ|/etc/app/config.yml|SUCCESS|service startup
+2026-03-01 09:45:01|deploy_svc|READ|/etc/app/database.yml|SUCCESS|service startup
+2026-03-01 10:00:15|charlie|WRITE|/home/charlie/project/main.py|SUCCESS|development work
+2026-03-01 10:12:30|charlie|WRITE|/home/charlie/project/utils.py|SUCCESS|development work
+2026-03-01 10:30:00|alice|READ|/shared/team/meeting_notes.md|SUCCESS|routine access
+2026-03-01 11:15:22|bob|READ|/var/log/apache2/access.log|SUCCESS|log review
+2026-03-01 11:20:00|bob|READ|/var/log/apache2/error.log|SUCCESS|log review
+2026-03-01 12:00:00|alice|READ|/home/alice/documents/lunch_menu.txt|SUCCESS|routine
+2026-03-01 13:30:00|charlie|WRITE|/home/charlie/project/test_main.py|SUCCESS|development
+2026-03-01 14:00:15|deploy_svc|READ|/etc/app/config.yml|SUCCESS|config reload
+2026-03-01 14:15:00|alice|READ|/shared/hr/policies.pdf|SUCCESS|routine access
+2026-03-01 15:00:00|bob|WRITE|/var/www/html/about.html|SUCCESS|content update
+2026-03-01 15:30:22|charlie|READ|/home/charlie/project/README.md|SUCCESS|development
+2026-03-01 16:45:00|alice|WRITE|/home/alice/documents/report_v2.docx|SUCCESS|document update
+2026-03-01 17:30:00|bob|READ|/var/www/html/style.css|SUCCESS|review
+# --- Anomalous activity begins below ---
+# After-hours access by bob (unusual for this user)
+2026-03-01 23:15:42|bob|READ|/etc/shadow|DENIED|attempted sensitive file read
+2026-03-01 23:15:44|bob|READ|/etc/passwd|SUCCESS|user enumeration
+2026-03-01 23:16:01|bob|READ|/root/.ssh/authorized_keys|DENIED|attempted SSH key access
+2026-03-01 23:16:15|bob|READ|/root/.ssh/id_rsa|DENIED|attempted private key theft
+2026-03-01 23:17:30|bob|READ|/var/lib/secrets/db_credentials.conf|DENIED|credential harvesting
+2026-03-01 23:17:45|bob|READ|/var/lib/secrets/api_keys.json|DENIED|credential harvesting
+2026-03-01 23:18:02|bob|WRITE|/tmp/.hidden_script.sh|SUCCESS|suspicious file creation
+2026-03-01 23:18:30|bob|CHMOD|/tmp/.hidden_script.sh|SUCCESS|mode changed to 0777
+# Normal next day
+2026-03-02 09:00:15|alice|READ|/home/alice/documents/report_v2.docx|SUCCESS|routine
+2026-03-02 09:05:00|bob|READ|/var/www/html/index.html|SUCCESS|routine
+2026-03-02 09:10:22|charlie|WRITE|/home/charlie/project/main.py|SUCCESS|development
+2026-03-02 09:30:00|deploy_svc|READ|/etc/app/config.yml|SUCCESS|service startup
+2026-03-02 10:00:00|alice|READ|/shared/team/sprint_backlog.md|SUCCESS|routine
+2026-03-02 10:30:15|charlie|WRITE|/home/charlie/project/api.py|SUCCESS|development
+2026-03-02 11:00:00|bob|READ|/var/log/syslog|SUCCESS|routine log review
+# Second anomalous session - elevated frequency from unknown user
+2026-03-02 02:30:00|unknown_proc|READ|/etc/passwd|SUCCESS|user enumeration
+2026-03-02 02:30:05|unknown_proc|READ|/etc/group|SUCCESS|group enumeration
+2026-03-02 02:30:10|unknown_proc|READ|/etc/hosts|SUCCESS|network recon
+2026-03-02 02:30:15|unknown_proc|READ|/etc/resolv.conf|SUCCESS|DNS recon
+2026-03-02 02:30:20|unknown_proc|READ|/etc/crontab|SUCCESS|scheduled task recon
+2026-03-02 02:30:25|unknown_proc|READ|/etc/sudoers|DENIED|privilege recon
+2026-03-02 02:30:30|unknown_proc|READ|/proc/version|SUCCESS|OS fingerprinting
+2026-03-02 02:30:35|unknown_proc|READ|/etc/os-release|SUCCESS|OS fingerprinting
+2026-03-02 02:30:40|unknown_proc|READ|/var/spool/cron/crontabs/root|DENIED|cron job enumeration
+2026-03-02 02:30:45|unknown_proc|WRITE|/tmp/.payload.elf|SUCCESS|malware staging
+2026-03-02 02:30:50|unknown_proc|CHMOD|/tmp/.payload.elf|SUCCESS|mode set to 0755
+2026-03-02 02:31:00|unknown_proc|EXEC|/tmp/.payload.elf|SUCCESS|malware execution
+# Third anomaly - legitimate user with unusual volume
+2026-03-02 14:00:00|charlie|READ|/home/alice/documents/report.docx|DENIED|cross-user access
+2026-03-02 14:00:05|charlie|READ|/home/alice/documents/budget.xlsx|DENIED|cross-user access
+2026-03-02 14:00:10|charlie|READ|/home/bob/www_backup.tar.gz|DENIED|cross-user access
+2026-03-02 14:00:15|charlie|READ|/shared/hr/salaries_2026.xlsx|DENIED|sensitive HR data
+2026-03-02 14:00:20|charlie|READ|/shared/hr/employee_ssn.csv|DENIED|PII access attempt
+2026-03-02 14:00:25|charlie|READ|/shared/finance/revenue_q1.xlsx|DENIED|financial data
+2026-03-02 14:00:30|charlie|READ|/shared/finance/bank_accounts.csv|DENIED|financial data
+# Resume normal operations
+2026-03-02 14:30:00|alice|WRITE|/home/alice/documents/notes.txt|SUCCESS|routine
+2026-03-02 15:00:00|bob|WRITE|/var/www/html/blog.html|SUCCESS|content update
+2026-03-02 15:30:00|deploy_svc|READ|/etc/app/config.yml|SUCCESS|health check
+2026-03-02 16:00:00|charlie|WRITE|/home/charlie/project/deploy.sh|SUCCESS|development
+2026-03-02 16:30:00|alice|READ|/shared/team/meeting_notes.md|SUCCESS|routine
+2026-03-02 17:00:00|bob|READ|/var/www/html/contact.html|SUCCESS|review
+2026-03-02 17:30:00|alice|WRITE|/home/alice/documents/report_final.docx|SUCCESS|end of day
